@@ -54,7 +54,7 @@ function deleteCheck(event){
     //console.log(event.target);
     const item = event.target;
     //delete todo
-    if(item.classList[0]=== 'trash-btn'){
+    if(item.classList[0] === 'trash-btn'){
         const todo = item.parentElement;
         //animation
         todo.classList.add('fall');
@@ -64,12 +64,26 @@ function deleteCheck(event){
         });        
     }
     //checklist
-    if(item.classList[0]=== 'complete-btn'){
+    if(item.classList[0] === 'complete-btn'){
         const todo = item.parentElement;
         todo.classList.toggle('completed');
     }
 }
 
+
 function filterTodo(event) {
-    // const todos = todoList.childNodes;
+    const todos = todoList.childNodes;
+    todos.forEach(function(todo){
+        switch (event.target.value){
+            case "all":
+                todo.style.display = 'flex';
+                break;
+            case "completed":
+                if(todo.classList.contains('completed')){
+                    todo.style.display = 'flex';
+                }else{
+                    todo.style.display = 'none';
+                }
+        }
+    });
  }
